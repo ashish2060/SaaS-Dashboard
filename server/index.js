@@ -16,7 +16,7 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use("/", userRouer);
+app.use("/api/user", userRouer);
 app.use(fileUpload());
 
 app.listen(process.env.PORT, () => {

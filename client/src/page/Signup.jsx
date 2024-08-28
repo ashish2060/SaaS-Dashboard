@@ -17,7 +17,7 @@ const Signup = () => {
 
     async function submitHandler(e) {
         e.preventDefault();
-        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/user/registration`, {
+        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/registration`, {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)

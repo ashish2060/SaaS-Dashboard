@@ -15,7 +15,7 @@ const ActiveUser = () => {
 
     async function submitHandler(e) {
         e.preventDefault();
-        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/user/activate-user`, {
+        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/activate-user`, {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ activation_code: otpArr.join(""), activation_token: token })

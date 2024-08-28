@@ -4,7 +4,7 @@ const Analytics = () => {
 
     const [users, setUsers] = useState(null)
     const fetchAllUsersDetails = async () => {
-        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/user/getallusersdetails`)
+        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/getallusersdetails`)
 
         const data = await response.json()
 

@@ -26,7 +26,7 @@ const Sidebar = () => {
     ]
 
     async function logoutHandler() {
-        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/user/logoutuser`)
+        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/logoutuser`)
         const data = await response.json()
 
         if (data.success) {

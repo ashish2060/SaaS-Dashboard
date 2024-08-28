@@ -23,7 +23,7 @@ const Profile = () => {
         formData.append("gender", formInput.gender)
         formData.append("oldPassword", formInput.oldPassword)
         formData.append("newPassword", formInput.newPassword)
-        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/user/updateuser`, {
+        const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/updateuser`, {
             method: "post",
             headers: { accesstoken: localStorage.getItem("accessToken") },
             body: formData,
