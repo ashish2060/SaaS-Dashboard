@@ -13,6 +13,10 @@ app.listen(process.env.PORT, () => {
   console.log("app is listening at port 4000");
 });
 
+// test route
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "Test Route" });
+});
 app.use(express.json());
 app.use(
   cors({
