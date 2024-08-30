@@ -24,10 +24,10 @@ export const sendMail = async (options) => {
     // const __dirname = path.dirname(__filename);
 
     // const templatePath = path.join(__dirname, "../mails/", template);
-    // const templatePath = path.join(process.cwd(), `/mails/${template}`);  --
+    const templatePath = path.join(process.cwd(), `/mails/${template}`);
 
     // render the email template with ejs
-    const html = await ejs.renderFile("./mails/activation-mail.ejs", data);
+    const html = await ejs.renderFile(templatePath, data);
 
     const mailOptions = {
       from: process.env.SMTP_MAIL,
