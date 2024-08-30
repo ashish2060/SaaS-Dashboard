@@ -18,6 +18,7 @@ app.use(
     ],
   })
 );
+app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use("/api/user", userRouter);
 app.use(fileUpload());
