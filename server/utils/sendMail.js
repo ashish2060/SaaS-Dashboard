@@ -36,16 +36,7 @@ export const sendMail = async (options) => {
       html: html,
     };
 
-    // await transpoter.sendMail(mailOptions);
-    await new Promise((resolve, reject) => {
-      transpoter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(info);
-        }
-      });
-    });
+    await transpoter.sendMail(mailOptions);
   } catch (error) {
     console.log(error.message);
   }
