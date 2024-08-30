@@ -24,7 +24,7 @@ export const sendMail = async (options) => {
     // const __dirname = path.dirname(__filename);
 
     // const templatePath = path.join(__dirname, "../mails/", template);
-    const templatePath = path.join(process.cwd(), "/mails/activation-mail.ejs");
+    const templatePath = path.join(process.cwd(), `/mails/${template}`);
 
     // render the email template with ejs
     const html = await ejs.renderFile(templatePath, data);
@@ -36,9 +36,22 @@ export const sendMail = async (options) => {
       html,
     };
 
-    await transpoter.sendMail(mailOptions);
+    // await transpoter.sendMail(mailOptions);
+    await new Promise((resolve, reject) => {
+      transpoter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(info);
+        }
+      });
+    });
   } catch (error) {
     console.log(error.message);
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+    });
   }
 };
 
