@@ -264,8 +264,8 @@ export const updateUser = async (req, res) => {
     user.gender = updateData.gender ? updateData.gender : user.gender;
     user.age = updateData.age ? updateData.age : user.age;
 
-    user.avatar.public_id = uploadData?.public_id;
-    user.avatar.url = uploadData?.secure_url;
+    user.avatar.public_id = uploadData?.public_id ? uploadData?.public_id : "";
+    user.avatar.url = uploadData?.secure_url ? uploadData?.secure_url : "";
 
     await user.save();
 

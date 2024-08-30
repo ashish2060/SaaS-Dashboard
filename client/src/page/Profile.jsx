@@ -19,6 +19,9 @@ const Profile = () => {
 
     async function submitHandler(e) {
         e.preventDefault();
+        if (!avatar && !formInput.name && !formInput.age && !formInput.gender && !formInput.oldPassword && !formInput.newPassword) {
+            return toast.error("Can't update empty field")
+        }
         setLoading(true)
         const formData = new FormData()
         formData.append("avatar", avatar)
@@ -36,6 +39,7 @@ const Profile = () => {
         if (data.success) {
             toast.success("Updation successfull")
             setFormInput({ name: "", age: "", gender: "Male", oldPassword: "", newPassword: "" })
+            setAvatar(null)
             fetchUserDetails()
         }
         else {
