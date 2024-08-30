@@ -55,7 +55,9 @@ const Profile = () => {
                                 className="lg:text-3xl md:text-2xl sm:text-xl xs:text-xl font-serif font-extrabold mb-2 dark:text-white">
                                 Profile
                             </h1>
+
                             <h2 className="text-grey text-sm mb-4 dark:text-gray-400">Create Profile</h2>
+                            <h1 className="text-red-500 text-lg m-2 lg:text-3xl md:text-2xl sm:text-xl xs:text-xl">Change only the field you required*</h1>
                             <form onSubmit={submitHandler}>
                                 <div
                                     className="w-full rounded-sm bg-[url('https://images.unsplash.com/photo-1449844908441-8829872d2607?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxob21lfGVufDB8MHx8fDE3MTA0MDE1NDZ8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat items-center">
