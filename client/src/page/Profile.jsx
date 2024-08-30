@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import toast from "react-hot-toast"
+import { UserContext } from "../context/userContext"
 
 const Profile = () => {
     const [avatar, setAvatar] = useState(null)
     const [formInput, setFormInput] = useState({ name: "", age: "", gender: "", oldPassword: "", newPassword: "" })
+    const [loading, setLoading] = useState(false)
+    const { fetchUserDetails } = useContext(UserContext)
 
     function changeHandler(e) {
         setFormInput((prev) => {
@@ -16,6 +19,7 @@ const Profile = () => {
 
     async function submitHandler(e) {
         e.preventDefault();
+        setLoading(true)
         const formData = new FormData()
         formData.append("avatar", avatar)
         formData.append("name", formInput.name)
@@ -31,10 +35,13 @@ const Profile = () => {
         const data = await response.json()
         if (data.success) {
             toast.success("Updation successfull")
+            setFormInput({ name: "", age: "", gender: "Male", oldPassword: "", newPassword: "" })
+            fetchUserDetails()
         }
         else {
             toast.error(data.message)
         }
+        setLoading(false)
     }
     return (
 
@@ -82,19 +89,19 @@ const Profile = () => {
                                         <label htmlFor="" className="mb-2 dark:text-gray-300">Name</label>
                                         <input type="text"
                                             className="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                            placeholder="Name" name="name" onChange={changeHandler} />
+                                            placeholder="Name" name="name" value={formInput.name} onChange={changeHandler} />
                                     </div>
                                     <div className="w-full  mb-4 lg:mt-6">
                                         <label htmlFor="" className=" dark:text-gray-300">Age</label>
                                         <input type="Number"
                                             className="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                            placeholder="Age" name="age" onChange={changeHandler} />
+                                            placeholder="Age" name="age" value={formInput.age} onChange={changeHandler} />
                                     </div>
                                     <div className="w-full  mb-4 lg:mt-6">
                                         <label htmlFor="" className=" dark:text-gray-300">Old Password</label>
                                         <input type="text"
                                             className="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                            placeholder="Old Password" name="oldPassword" onChange={changeHandler} />
+                                            placeholder="Old Password" name="oldPassword" value={formInput.oldPassword} onChange={changeHandler} />
                                     </div>
                                 </div>
 
@@ -114,11 +121,11 @@ const Profile = () => {
                                         <input type="text"
                                             className="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                             id="newPassword"
-                                            placeholder="New Password" name="newPassword" onChange={changeHandler} />
+                                            placeholder="New Password" name="newPassword" value={formInput.newPassword} onChange={changeHandler} />
                                     </div>
                                 </div>
                                 <div className="w-full rounded-lg bg-blue-500 mt-4 text-white text-lg font-semibold">
-                                    <button type="submit" className="w-full p-4">Submit</button>
+                                    <button type="submit" className="w-full p-4">{loading ? "Loading..." : "Submit"}</button>
                                 </div>
                             </form>
                         </div>

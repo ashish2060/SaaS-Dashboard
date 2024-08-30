@@ -47,7 +47,7 @@ const Dashboard = () => {
                         <h1 className="text-2xl text-white">Total Active Users in the Year</h1>
                         {/* options */}
 
-                        <select className="form-select w-fit" aria-label="Default select example" onClick={(e) => setYear(e.target.value)} >
+                        <select className="form-select w-fit" aria-label="Default select example" onChange={(e) => setYear(e.target.value)}  >
                             <option value="2024">2024</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>

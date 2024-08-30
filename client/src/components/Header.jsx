@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { Link, useNavigate } from "react-router-dom"
 import { fetchUserDetails } from "../utils/getUserDetails"
 import { GiHamburgerMenu } from "react-icons/gi";
+import { UserContext } from "../context/userContext";
 
 const Header = () => {
-    const [user, setUser] = useState(null)
     const [openSidebar, setOpenSidebar] = useState(false)
     const navigate = useNavigate()
-
-    useEffect(() => {
-        fetchUserDetails().then((res) => setUser(res))
-    }, [])
-
+    const { user } = useContext(UserContext)
+    console.log(user)
     async function logoutHandler() {
         const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/logoutuser`)
         const data = await response.json()
@@ -54,7 +51,7 @@ const Header = () => {
 
                     <div className="hidden md:block mt-3 dropdown text-end">
                         <a href="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src={`${user?.avatar?.url ? user?.avatar?.url : "https://github.com/mdo.png"}`} alt="img" className="w-10 h-10 rounded-full" />
+                            <img src={`${user?.avatar?.url ? user?.avatar?.url : "/logo.png"}`} alt="img" className="w-10 h-10 rounded-full" />
                         </a>
                         <ul className="dropdown-menu text-small">
                             <li><Link className="dropdown-item" to={"/settings"}>Settings</Link></li>
@@ -97,7 +94,7 @@ const Header = () => {
                             </ul>
                             <div className="flex mt-3 dropdown text-end ">
                                 <a href="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src={`${user?.avatar?.url ? user?.avatar?.url : "https://github.com/mdo.png"}`} alt="img" className="w-10 h-10 rounded-full" />
+                                    <img src={`${user?.avatar?.url ? user?.avatar?.url : "/logo.png"}`} alt="img" className="w-10 h-10 rounded-full" />
                                 </a>
                                 <ul className="dropdown-menu text-small">
                                     <li><Link className="dropdown-item" to={"/settings"} onClick={() => setOpenSidebar((prev) => !prev)}>Settings</Link></li>

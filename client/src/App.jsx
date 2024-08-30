@@ -12,39 +12,43 @@ import Signup from './page/Signup';
 import ActiveUser from './page/ActiveUser';
 import PrivateRoutes from './middleware/PrivateRoute';
 import PublicRoutes from './middleware/PublicRoute';
+import UserContextProvider from './context/userContext';
 
 function App() {
 
   const location = useLocation()
 
   return (
-    <div className='flex overflow-hidden'>
-      {
-        location.pathname == "/login" || location.pathname == "/signup" ? null : <Sidebar />
-      }
-      <div className='flex flex-col w-full'>
+    <UserContextProvider>
+
+      <div className='flex overflow-hidden'>
         {
-          location.pathname == "/login" || location.pathname == "/signup" ? null : <Header />
+          location.pathname == "/login" || location.pathname == "/signup" ? null : <Sidebar />
         }
+        <div className='flex flex-col w-full'>
+          {
+            location.pathname == "/login" || location.pathname == "/signup" ? null : <Header />
+          }
 
-        <Routes >
-          <Route element={<PrivateRoutes />}>
-            <Route path='/analytics' element={<Analytics />} />
-            <Route path='/settings' element={<Profile />} />
-            <Route path='/' element={<Dashboard />} />
-          </Route>
+          <Routes >
+            <Route element={<PrivateRoutes />}>
+              <Route path='/analytics' element={<Analytics />} />
+              <Route path='/settings' element={<Profile />} />
+              <Route path='/' element={<Dashboard />} />
+            </Route>
 
-          <Route element={<PublicRoutes />}>
-            <Route path='/activate-user/:token' element={<ActiveUser />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<Signup />} />
-          </Route>
+            <Route element={<PublicRoutes />}>
+              <Route path='/activate-user/:token' element={<ActiveUser />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} />
+            </Route>
 
 
-        </Routes>
+          </Routes>
+        </div>
+
       </div>
-
-    </div>
+    </UserContextProvider>
   )
 
 }

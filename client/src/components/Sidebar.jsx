@@ -65,7 +65,7 @@ const Sidebar = () => {
             <hr />
             <div className="dropdown">
                 <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src={`${avatar ? avatar : "https://github.com/mdo.png"}`} alt="" width="32" height="32" className="rounded-circle me-2" />
+                    <img src={`${avatar ? avatar : "/logo.png"}`} alt="" width="32" height="32" className="w-10 h-10 rounded-full me-2 m-2" />
                     <strong>you</strong>
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">

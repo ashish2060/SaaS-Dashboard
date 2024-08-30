@@ -108,6 +108,7 @@ export const activateUser = async (req, res, next) => {
       password,
       age,
       gender,
+      isVerified: true,
     });
 
     return res.status(201).json({
