@@ -99,7 +99,7 @@ const Header = () => {
                                     <li><Link className="dropdown-item" to={"/settings"} onClick={() => setOpenSidebar((prev) => !prev)}>Settings</Link></li>
                                     <li><Link className="dropdown-item" to={"/settings"} onClick={() => setOpenSidebar((prev) => !prev)}>Profile</Link></li>
                                     <li><hr className="dropdown-divider" /></li>
-                                    <li><a href="" className="dropdown-item" onClick={logoutHandler}>Sign out</a></li>
+                                    <li><a className="dropdown-item" onClick={logoutHandler}>Sign out</a></li>
                                 </ul>
                             </div>
                         </div>
