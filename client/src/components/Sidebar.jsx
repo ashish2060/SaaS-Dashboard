@@ -52,7 +52,7 @@ const Sidebar = () => {
                 {
                     sidebarItems.map(item => {
                         return (
-                            <li className="nav-item" key={item.id} onClick={() => setActive(item.id)}>
+                            <li className="nav-item" key={item.id}>
                                 <Link to={item.link} className={`nav-link ${location.pathname == item.link ? "active" : ""} text-white`} aria-current="page">
                                     <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home"></use></svg>
                                     {item.name}
