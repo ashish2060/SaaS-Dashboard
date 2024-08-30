@@ -9,7 +9,6 @@ const Header = () => {
     const [openSidebar, setOpenSidebar] = useState(false)
     const navigate = useNavigate()
     const { user } = useContext(UserContext)
-    console.log(user)
     async function logoutHandler() {
         const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/logoutuser`)
         const data = await response.json()

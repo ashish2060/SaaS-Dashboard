@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const Signup = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({ name: "", email: "", age: "", gender: "Male", password: "" });
+    const [loading, setLoading] = useState(false)
 
     function changeHandler(e) {
         setFormData((prev) => {
@@ -17,6 +18,7 @@ const Signup = () => {
 
     async function submitHandler(e) {
         e.preventDefault();
+        setLoading(true)
         const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/registration`, {
             method: "post",
             headers: { "Content-Type": "application/json" },
@@ -31,6 +33,7 @@ const Signup = () => {
             console.log("error", data.error)
             toast.error(data.message)
         }
+        setLoading(false)
     }
     return (
         <div className="bg-light py-3 py-md-5">
@@ -72,7 +75,7 @@ const Signup = () => {
                                     </div>
                                     <div className="col-12">
                                         <div className="d-grid">
-                                            <button className="btn btn-lg btn-primary" type='submit'>Signup now</button>
+                                            <button className="btn btn-lg btn-primary" type='submit'>{loading ? "Loading..." : "Signup now"}</button>
                                         </div>
                                     </div>
                                 </div>

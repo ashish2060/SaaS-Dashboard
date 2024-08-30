@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle'
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import Analytics from './page/Analytics';
 import Profile from './page/Profile';
 import Dashboard from './page/Dashboard';
@@ -14,20 +14,29 @@ import PrivateRoutes from './middleware/PrivateRoute';
 import PublicRoutes from './middleware/PublicRoute';
 import UserContextProvider from './context/userContext';
 
+
 function App() {
 
   const location = useLocation()
+
+  function activateUser() {
+    if (location.pathname) {
+      let arr = location.pathname.split('/')
+      return arr[2]
+    }
+  }
+
 
   return (
     <UserContextProvider>
 
       <div className='flex overflow-hidden'>
         {
-          location.pathname == "/login" || location.pathname == "/signup" ? null : <Sidebar />
+          location.pathname == "/login" || location.pathname == "/signup" || location.pathname == `/activate-user/${activateUser()}` ? null : <Sidebar />
         }
         <div className='flex flex-col w-full'>
           {
-            location.pathname == "/login" || location.pathname == "/signup" ? null : <Header />
+            location.pathname == "/login" || location.pathname == "/signup" || location.pathname == `/activate-user/${activateUser()}` ? null : <Header />
           }
 
           <Routes >

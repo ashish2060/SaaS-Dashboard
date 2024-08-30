@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 const Login = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({ email: "", password: "" });
+    const [loading, setLoading] = useState(false)
 
     function changeHandler(e) {
         setFormData((prev) => {
@@ -17,6 +18,7 @@ const Login = () => {
 
     async function submitHandler(e) {
         e.preventDefault();
+        setLoading(true)
         const response = await fetch(`${import.meta.env.VITE_ORIGIN}/api/user/login`, {
             method: "post",
             headers: { "Content-Type": "application/json" },
@@ -31,6 +33,7 @@ const Login = () => {
         } else {
             toast.error(data.message)
         }
+        setLoading(false)
     }
 
     return (
@@ -67,7 +70,7 @@ const Login = () => {
                                     </div>
                                     <div className="col-12">
                                         <div className="d-grid">
-                                            <button className="btn btn-lg btn-primary" type="submit">Log in now</button>
+                                            <button className="btn btn-lg btn-primary" type="submit">{loading ? "Loading..." : "Log in now"}</button>
                                         </div>
                                     </div>
                                 </div>

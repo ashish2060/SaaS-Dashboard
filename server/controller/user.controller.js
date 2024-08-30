@@ -39,13 +39,6 @@ export const registrationUser = async (req, res, next) => {
     const data = { user: user.name, activationCode };
 
     // filepath
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-
-    const html = await ejs.renderFile(
-      path.join(__dirname, "../mails/activation-mail.ejs"),
-      data
-    );
 
     await sendMail({
       email,

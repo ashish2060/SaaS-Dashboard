@@ -5,9 +5,17 @@ import { useState } from "react"
 import { FiUsers } from "react-icons/fi";
 import { TbShoppingBagHeart } from "react-icons/tb";
 import { HiCurrencyRupee } from "react-icons/hi2";
+import { useContext, useEffect } from 'react';
+import { UserContext } from "../context/userContext";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 const Dashboard = () => {
+
+    const { fetchUserDetails } = useContext(UserContext)
+
+    useEffect(() => {
+        fetchUserDetails()
+    }, [])
     const widgets = [
         {
             name: "Purchased",

@@ -38,7 +38,8 @@ const Profile = () => {
         const data = await response.json()
         if (data.success) {
             toast.success("Updation successfull")
-            setFormInput({ name: "", age: "", gender: "Male", oldPassword: "", newPassword: "" })
+            console.log(formInput)
+            setFormInput({ name: "", age: "", gender: "", oldPassword: "", newPassword: "" })
             setAvatar(null)
             fetchUserDetails()
         }

@@ -12,10 +12,7 @@ dotenv.config();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "https://saas-dashboard-client.vercel.app",
-      "http://localhost:4173",
-    ],
+    origin: ["https://saas-dashboard-client.vercel.app"],
   })
 );
 app.use(cookieParser());
