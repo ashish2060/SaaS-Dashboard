@@ -28,6 +28,7 @@ const Signup = () => {
             setFormData({ name: "", email: "", age: "", gender: "Male", password: "" })
             navigate(`/activate-user/${data.activationToken}`)
         } else {
+            console.log("error", data.error)
             toast.error(data.message)
         }
     }

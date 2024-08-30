@@ -1,6 +1,6 @@
 import app from "./app.js";
 import dotenv from "dotenv";
-import userRouer from "./routes/user.router.js";
+import userRouter from "./routes/user.router.js";
 import dbConnect from "./utils/dbConnect.js";
 import cors from "cors";
 import express from "express";
@@ -14,12 +14,12 @@ app.use(
   cors({
     origin: [
       "https://saas-dashboard-client.vercel.app",
-      "http://localhost:5173",
+      "http://localhost:4173",
     ],
   })
 );
 app.use(cookieParser());
-app.use("/api/user", userRouer);
+app.use("/api/user", userRouter);
 app.use(fileUpload());
 
 app.listen(process.env.PORT, () => {

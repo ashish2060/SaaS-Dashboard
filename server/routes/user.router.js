@@ -10,14 +10,14 @@ import {
 } from "../controller/user.controller.js";
 import upload from "../utils/upload.js";
 
-const userRouer = express.Router();
+const userRouter = express.Router();
 
-userRouer.post("/registration", registrationUser);
-userRouer.post("/activate-user", activateUser);
-userRouer.post("/login", loginUser);
-userRouer.post("/getuserdetails", getUserDetails);
-userRouer.get("/getallusersdetails", getAllUsersDetails);
-userRouer.get("/logoutuser", logoutUser);
-userRouer.post("/updateuser", upload.single("avatar"), updateUser);
+userRouter.post("/registration", registrationUser);
+userRouter.post("/activate-user", activateUser);
+userRouter.post("/login", loginUser);
+userRouter.post("/getuserdetails", getUserDetails);
+userRouter.get("/getallusersdetails", getAllUsersDetails);
+userRouter.get("/logoutuser", logoutUser);
+userRouter.post("/updateuser", upload.single("avatar"), updateUser);
 
-export default userRouer;
+export default userRouter;
